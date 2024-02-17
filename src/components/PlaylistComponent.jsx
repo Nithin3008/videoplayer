@@ -3,7 +3,7 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { mediaJSON } from "../videoData";
 import { PlaylistContext } from "./PlaylistReducer";
 
-const PlaylistComponent = ({ selectedPlaylist }) => {
+const PlaylistComponent = ({ selectedPlaylist, setVideo }) => {
   const { state, dispatcher } = useContext(PlaylistContext);
   console.log(selectedPlaylist);
   // ...mediaJSON.categories[0].videos
@@ -39,7 +39,7 @@ const PlaylistComponent = ({ selectedPlaylist }) => {
               <ul
                 {...provided.droppableProps}
                 ref={provided.innerRef}
-                className="space-y-4"
+                className="flex flex-wrap gap-5 items-center justify-center mt-10"
               >
                 {items.map((val, index) => (
                   <Draggable key={val.id} draggableId={val.id} index={index}>
@@ -48,9 +48,15 @@ const PlaylistComponent = ({ selectedPlaylist }) => {
                         ref={provided.innerRef}
                         {...provided.dragHandleProps}
                         {...provided.draggableProps}
-                        className="bg-blue-500"
+                        className="w-60"
                       >
-                        <h1>{val.description}</h1>
+                        <img
+                          src={val.thumb}
+                          onClick={() => setVideo(val.sources)}
+                          alt="thumb"
+                          className="rounded-md"
+                        ></img>
+                        <h1>{val.description.substring(0, 30)}....</h1>
                       </li>
                     )}
                   </Draggable>
