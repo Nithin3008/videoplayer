@@ -16,6 +16,7 @@ const VideoComponent = ({ videoId }) => {
         src={data}
         autoPlay={true}
         controls
+        muted
       ></video>
       <div className="absolute bottom-[30px] right-[220px] ">
         <select
