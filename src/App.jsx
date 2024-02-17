@@ -7,7 +7,9 @@ import VideoComponent from "./components/VideoComponent";
 
 function App() {
   const [selectedPlaylist, setSelectPlaylist] = useState("");
-  const [videoId, setVideoId] = useState(0);
+  const [videoId, setVideoId] = useState(
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+  );
   function setPlaylist(id) {
     setSelectPlaylist(id);
   }
